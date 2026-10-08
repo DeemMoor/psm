@@ -1,0 +1,10 @@
+/node_modules/
+/backend/vendor/
+/backend/var/
+/backend/.env.local
+/backend/.env.*.local
+/backend/public/assets/
+/backend/public/build/
+/backend/public/index.html
+/dist/
+.DS_Store
