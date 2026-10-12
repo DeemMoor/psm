@@ -54,9 +54,9 @@ nano .env.local
 ```dotenv
 APP_ENV=prod
 APP_SECRET=<строка_из_команды_выше>
-DATABASE_URL="mysql://<DB>:<ПАРОЛЬ>@localhost:3306/<DB>?serverVersion=8.0&charset=utf8mb4"
+DATABASE_URL="mysql://<DB>:<ПАРОЛЬ>@localhost:3306/<DB>?serverVersion=8.4&charset=utf8mb4"
 ```
-- `serverVersion` — под реальную СУБД сервера (`mysql --version`; MariaDB → напр. `10.11.2-MariaDB`).
+- `serverVersion` — под реальную СУБД сервера (`php8.5 bin/console dbal:run-sql "SELECT VERSION()"` — `mysql --version` показывает версию клиента, а не сервера; MariaDB → напр. `10.11.2-MariaDB`).
 - Спецсимволы в пароле url-кодировать (`@`→`%40`, `#`→`%23`, `%`→`%25`).
 - `APP_ENV=prod` обязателен **до** `composer install` (иначе `cache:clear` пойдёт в dev и упадёт на MakerBundle).
 
