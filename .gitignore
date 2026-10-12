@@ -21,6 +21,7 @@ Thumbs.db
 # Собранный React-фронт (npm run build кладёт сюда; собираем локально и заливаем rsync'ом)
 /backend/public/index.html
 /backend/public/assets/
+/backend/public/img/
 
 # Frontend — React/Vite (frontend/)
 /frontend/node_modules/

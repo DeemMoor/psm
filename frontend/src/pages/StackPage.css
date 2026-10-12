@@ -1,0 +1,98 @@
+/* Секретная страница Tech Stack — в палитре лендинга. */
+.stack-page {
+  flex: 1;
+  padding: 56px 0 64px;
+}
+
+.stack-heading {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+
+.stack-status {
+  color: #9a9f98;
+  font-size: 14px;
+}
+
+.stack-group {
+  margin-top: 40px;
+}
+
+.stack-title {
+  margin: 0 0 14px;
+  color: #69716a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.stack-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid #ffffff13;
+  background: #ffffff05;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+
+.stack-card:hover {
+  border-color: #c1c6ae;
+  background: #ffffff0a;
+  transform: translateY(-2px);
+}
+
+/* Светлая плашка под логотип: тёмные логотипы (Symfony, MySQL) иначе пропадают на фоне. */
+.stack-logo {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: #e9ebe0;
+}
+
+.stack-logo img {
+  object-fit: contain;
+}
+
+.stack-logo-letter {
+  color: #1c211e;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.stack-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.stack-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.stack-version {
+  color: #c1c6ae;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stack-credit {
+  margin-top: 48px;
+  color: #69716a;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
