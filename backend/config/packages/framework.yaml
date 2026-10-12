@@ -1,4 +1,16 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
-    router:
-        utf8: true
+
+    # Note that the session will be started ONLY if you read or write from it.
+    session:
+        # cookie_secure: auto — флаг Secure включается автоматически на HTTPS
+        # (на проде), но не мешает локальной разработке по http.
+        cookie_secure: auto
+        # SameSite=lax — защита от CSRF, при этом обычные переходы работают.
+        cookie_samesite: lax
+        # HttpOnly — JS не может прочитать cookie сессии (защита от XSS).
+        cookie_httponly: true
+
+    #esi: true
+    #fragments: true

@@ -1,10 +1,28 @@
-/node_modules/
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.iml
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Секреты и окружение — НИКОГДА не коммитим (см. CLAUDE.md)
+.env.local
+.env.*.local
+
+# Backend — Symfony (backend/)
 /backend/vendor/
 /backend/var/
 /backend/.env.local
-/backend/.env.*.local
-/backend/public/assets/
-/backend/public/build/
+/backend/public/bundles/
+
+# Собранный React-фронт (npm run build кладёт сюда; собираем локально и заливаем rsync'ом)
 /backend/public/index.html
-/dist/
-.DS_Store
+/backend/public/assets/
+
+# Frontend — React/Vite (frontend/)
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
