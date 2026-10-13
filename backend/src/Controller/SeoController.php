@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
- * robots.txt и sitemap.xml генерируются на лету из реестра страниц (SitePages),
+ * robots.txt, sitemap.xml и llms.txt отдаются Symfony; первые два генерируются на лету из реестра страниц (SitePages),
  * поэтому всегда совпадают с реальным сайтом — ничего не надо пересобирать руками.
  */
 final class SeoController extends AbstractController
@@ -34,6 +34,19 @@ final class SeoController extends AbstractController
             : "User-agent: *\nDisallow: /\n";
 
         return new Response($rules, Response::HTTP_OK, ['Content-Type' => 'text/plain; charset=utf-8']);
+    }
+
+    /**
+     * llms.txt — краткое описание сайта для ИИ-поиска (https://llmstxt.org).
+     * Отдаём через Symfony, а не статикой: статику на BeGet отдаёт nginx без charset,
+     * и кириллица в браузере превращается в кракозябры.
+     */
+    #[Route('/llms.txt', name: 'seo_llms', methods: ['GET', 'HEAD'])]
+    public function llms(): Response
+    {
+        $path = $this->getParameter('kernel.project_dir').'/resources/llms.txt';
+
+        return new Response((string) file_get_contents($path), Response::HTTP_OK, ['Content-Type' => 'text/plain; charset=utf-8']);
     }
 
     #[Route('/sitemap.xml', name: 'seo_sitemap', methods: ['GET', 'HEAD'])]

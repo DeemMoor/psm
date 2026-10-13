@@ -24,7 +24,6 @@ Thumbs.db
 /backend/public/assets/
 /backend/public/img/
 /backend/public/favicon.svg
-/backend/public/llms.txt
 
 # Frontend — React/Vite (frontend/)
 /frontend/node_modules/
