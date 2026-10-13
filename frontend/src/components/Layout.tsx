@@ -10,7 +10,7 @@ export default function Layout() {
           <span className="brand-icon">G</span>
           <span>ГРАФИТ<span className="brand-dot">.</span></span>
         </Link>
-        <span className="topbar-note">Промышленные материалы</span>
+        <span className="topbar-note">Лопатки для насосов на заказ</span>
         <a className="header-phone" href={PHONE_HREF}>
           <span className="phone-dot" />{PHONE}
         </a>

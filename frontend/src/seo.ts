@@ -14,8 +14,8 @@ export type PageMeta = {
 // Мета-данные страниц. Список путей должен совпадать с backend/src/Seo/SitePages.php.
 export const PAGES: Record<string, PageMeta> = {
   '/': {
-    title: 'Продажа графитовых лопаток — psm-carbon.ru',
-    description: `Графитовые лопатки для промышленного оборудования. Наличие и условия поставки — по телефону ${PHONE}.`,
+    title: 'Графитовые лопатки для вакуумных насосов на заказ — Becker, Rietschle, НВПР',
+    description: `Изготовление графитовых лопаток для роторно-пластинчатых насосов и компрессоров сухого трения по размерам, чертежу или образцу. Изостатический графит CZ5, CGD. Срочно за 1 сутки. Доставка СДЭК, самовывоз в Ростове-на-Дону. ${PHONE}.`,
   },
   '/stack': {
     title: 'Tech Stack — Графитовые лопатки',
@@ -41,7 +41,14 @@ const ORGANIZATION = {
   name: SITE_NAME,
   url: `${SITE_URL}/`,
   telephone: PHONE.replace(/[^+\d]/g, ''),
+  image: `${SITE_URL}/img/og.jpg`,
   description: PAGES['/'].description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ростов-на-Дону',
+    addressCountry: 'RU',
+  },
+  areaServed: 'RU',
 }
 
 const escape = (value: string) =>
@@ -63,6 +70,10 @@ export function headHtml(path: string): string {
     `<meta property="og:title" content="${escape(meta.title)}" />`,
     `<meta property="og:description" content="${escape(meta.description)}" />`,
     `<meta property="og:url" content="${escape(url)}" />`,
+    `<meta property="og:image" content="${SITE_URL}/img/og.jpg" />`,
+    '<meta property="og:image:width" content="960" />',
+    '<meta property="og:image:height" content="504" />',
+    `<meta property="og:image:alt" content="${escape(SITE_NAME)}" />`,
   ]
   if (path === '/') {
     // JSON внутри <script>: экранируем "<", чтобы строка не могла закрыть тег.
