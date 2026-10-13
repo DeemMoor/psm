@@ -23,7 +23,6 @@ export default function StackPage() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    document.title = 'Tech Stack — Графитовые лопатки'
     getStack()
       .then(setGroups)
       .catch(() => setError('Не удалось загрузить стек'))

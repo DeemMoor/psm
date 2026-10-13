@@ -84,7 +84,7 @@ make deploy
 2. собирает фронт в контейнере `node` (`npm ci && npm run build` → `backend/public`);
 3. `git push origin master`;
 4. на сервере: `git pull --ff-only` + `scripts/deploy-remote.sh`;
-5. `rsync`: новые `assets/` → `index.html` → удаление старых `assets/`.
+5. `rsync`: новые `assets/` → пререндеренный HTML в `backend/spa/` → удаление старых `assets/`.
 
 # Чего тут нет
 

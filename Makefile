@@ -37,7 +37,7 @@ console:       ## Symfony-консоль:  make console c="about"
 lint:          ## Линт и проверка типов фронта
 	docker compose run --rm --no-deps node sh -c "npm run lint && npx tsc -b"
 
-front-build:   ## Собрать React в backend/public (локально, в контейнере node)
+front-build:   ## Собрать React: ассеты в backend/public, пререндеренный HTML в backend/spa
 	rm -rf backend/public/assets  # без старых хэшированных файлов, иначе rsync потащит их на прод
 	docker compose run --rm --no-deps node sh -c "npm ci && npm run build"
 
@@ -51,9 +51,10 @@ deploy:        ## Деплой на BeGet: сборка фронта -> git push
 	@echo ">> 3/4 сервер: git pull, composer, миграции, кэш"
 	ssh $(DEPLOY_HOST) 'cd $(DEPLOY_DIR) && git pull --ff-only origin master && bash scripts/deploy-remote.sh'
 	@echo ">> 4/4 заливка собранного фронта"
-	# Сначала новые ассеты, потом index.html (он ссылается на них), в конце — чистка старых ассетов.
+	# Сначала новые ассеты, потом пререндеренный HTML (он ссылается на них), в конце — чистка старых ассетов.
 	rsync -az backend/public/assets/ $(DEPLOY_HOST):$(DEPLOY_DIR)/backend/public/assets/
 	@if [ -d frontend/public ]; then rsync -az frontend/public/ $(DEPLOY_HOST):$(DEPLOY_DIR)/backend/public/; fi
-	rsync -az backend/public/index.html $(DEPLOY_HOST):$(DEPLOY_DIR)/backend/public/index.html
+	rsync -az --delete backend/spa/ $(DEPLOY_HOST):$(DEPLOY_DIR)/backend/spa/
+	ssh $(DEPLOY_HOST) 'rm -f $(DEPLOY_DIR)/backend/public/index.html'
 	rsync -az --delete backend/public/assets/ $(DEPLOY_HOST):$(DEPLOY_DIR)/backend/public/assets/
 	@echo ">> деплой завершён"
