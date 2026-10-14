@@ -1,6 +1,6 @@
 import Gallery from '../components/Gallery'
 import { PHONE, PHONE_HREF } from '../contacts'
-import { GALLERY, PHOTOS } from '../photos'
+import { HERO, MATERIAL, MEASURE, PROFILE_VIDEO, WORKS } from '../photos'
 
 // Тексты лендинга. Вынесены в массивы, чтобы правка контента не требовала лезть в разметку.
 const TERMS = [
@@ -39,7 +39,7 @@ export default function HomePage() {
         <div className="hero-art">
           <div className="art-glow" />
           {/* Главное фото грузим сразу (не lazy) — оно на первом экране. */}
-          <img className="hero-photo" src={PHOTOS.fan.src} alt={PHOTOS.fan.alt} width={PHOTOS.fan.width} height={PHOTOS.fan.height} fetchPriority="high" />
+          <img className="hero-photo" src={HERO.src} alt={HERO.alt} width={HERO.width} height={HERO.height} fetchPriority="high" />
           <div className="art-label"><span>G / 01</span><span>GRAPHITE<br />VANES</span></div>
         </div>
       </section>
@@ -60,25 +60,36 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>03</span> Примеры работ</h2>
-        <Gallery photos={GALLERY} />
+        <Gallery photos={WORKS} initial={8} />
       </section>
 
       <section className="block">
         <h2 className="block-title"><span>04</span> Материал</h2>
-        <div className="columns">
-          <p>
-            Мелкозернистый плотный конструкционный графит — изостатический, марки <b>CZ5</b> и <b>CGD</b>,
-            с пониженным содержанием примесей.
-          </p>
-          <p>
-            Такой графит стабильно держит форму при нагреве и служит дольше экструзионного:
-            меньше пыли и меньше износ камеры насоса.
-          </p>
+        <div className="with-photo">
+          <div className="stack">
+            <p>
+              Мелкозернистый плотный конструкционный графит — изостатический, марки <b>CZ5</b> и <b>CGD</b>,
+              с пониженным содержанием примесей.
+            </p>
+            <p>
+              Такой графит стабильно держит форму при нагреве и служит дольше экструзионного:
+              меньше пыли и меньше износ камеры насоса.
+            </p>
+          </div>
+          <img className="block-photo" src={MATERIAL.src} alt={MATERIAL.alt} width={MATERIAL.width} height={MATERIAL.height} loading="lazy" decoding="async" />
         </div>
       </section>
 
       <section className="block">
-        <h2 className="block-title"><span>05</span> Для каких насосов</h2>
+        <h2 className="block-title"><span>05</span> Контроль размеров</h2>
+        <p className="block-text">
+          Толщину, ширину и длину проверяем микрометром и штангенциркулем — с точностью до сотых долей миллиметра.
+        </p>
+        <Gallery photos={MEASURE} initial={4} />
+      </section>
+
+      <section className="block">
+        <h2 className="block-title"><span>06</span> Для каких насосов</h2>
         <ul className="brands">
           {BRANDS.map((brand) => <li key={brand}>{brand}</li>)}
           <li className="brands-more">и другие</li>
@@ -89,18 +100,29 @@ export default function HomePage() {
       </section>
 
       <section className="block">
-        <h2 className="block-title"><span>06</span> Нестандартные доработки</h2>
+        <h2 className="block-title"><span>07</span> Нестандартные доработки</h2>
         <div className="with-photo">
           <p className="block-text">
-            Делаем не только по стандарту: увеличим высоту, изменим геометрию, уберём фаску и т. д.
-            Есть свои требования — расскажите, согласуем.
+            Делаем не только по стандарту: увеличим высоту, изменим геометрию, уберём фаску, сделаем пазы
+            и ступеньки по образцу. Есть свои требования — расскажите, согласуем.
           </p>
-          <img className="block-photo" src={PHOTOS.short.src} alt={PHOTOS.short.alt} width={PHOTOS.short.width} height={PHOTOS.short.height} loading="lazy" decoding="async" />
+          {/* preload="none": видео (~3 МБ) не качается, пока не нажали Play — на экране только обложка. */}
+          <video
+            className="block-video"
+            src={PROFILE_VIDEO.src}
+            poster={PROFILE_VIDEO.poster}
+            width={PROFILE_VIDEO.width}
+            height={PROFILE_VIDEO.height}
+            controls
+            playsInline
+            preload="none"
+            aria-label="Видео: графитовая лопатка нестандартного профиля с пазами"
+          />
         </div>
       </section>
 
       <section className="block">
-        <h2 className="block-title"><span>07</span> Как получить расчёт</h2>
+        <h2 className="block-title"><span>08</span> Как получить расчёт</h2>
         <p className="block-text">Позвоните или напишите на {PHONE} и пришлите любое из этого:</p>
         <ol className="steps">
           {STEPS.map((step) => <li key={step}>{step}</li>)}
@@ -109,7 +131,7 @@ export default function HomePage() {
       </section>
 
       <section className="block">
-        <h2 className="block-title"><span>08</span> Доставка</h2>
+        <h2 className="block-title"><span>09</span> Доставка</h2>
         <div className="columns">
           <p>Отправляем транспортной компанией <b>СДЭК</b>, другие компании — по договорённости.</p>
           <p>Самовывоз — <b>г. Ростов-на-Дону</b>, район СЖМ.</p>

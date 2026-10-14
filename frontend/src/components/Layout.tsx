@@ -8,7 +8,7 @@ export default function Layout() {
       <header className="topbar">
         <Link className="brand" to="/" aria-label="Главная">
           <span className="brand-icon">G</span>
-          <span>ГРАФИТ<span className="brand-dot">.</span></span>
+          <span className="brand-text"><span>ГРАФИТОВЫЕ</span> <span>ИЗДЕЛИЯ<span className="brand-dot">.</span></span></span>
         </Link>
         <span className="topbar-note">Лопатки для насосов на заказ</span>
         <a className="header-phone" href={PHONE_HREF}>

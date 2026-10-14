@@ -71,8 +71,8 @@ export function headHtml(path: string): string {
     `<meta property="og:description" content="${escape(meta.description)}" />`,
     `<meta property="og:url" content="${escape(url)}" />`,
     `<meta property="og:image" content="${SITE_URL}/img/og.jpg" />`,
-    '<meta property="og:image:width" content="960" />',
-    '<meta property="og:image:height" content="504" />',
+    '<meta property="og:image:width" content="1024" />',
+    '<meta property="og:image:height" content="538" />',
     `<meta property="og:image:alt" content="${escape(SITE_NAME)}" />`,
   ]
   if (path === '/') {

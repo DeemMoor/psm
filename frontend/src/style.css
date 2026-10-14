@@ -47,3 +47,11 @@
 /* Подпись первого экрана — под фото, а не поверх него. */
 .hero-art .art-label{position:static;justify-self:end;margin-top:20px}
 .hero-art{align-content:center}
+/* На телефоне название в две строки, чтобы шапка не вылезала за экран. */
+@media(max-width:760px){.brand-text>span{display:block}.brand{line-height:1.35}}
+.gallery+.gallery-more{margin-top:16px}
+.gallery-more{justify-self:start;padding:12px 20px;border:1px solid #c1c6ae;background:none;color:#e4e6da;font:inherit;font-size:12px;font-weight:700;letter-spacing:.04em;cursor:pointer}
+.gallery-more:hover{background:#c1c6ae;color:#171a18}
+.block .block-text+.gallery{margin-top:24px}
+.stack{display:grid;gap:16px}
+.block-video{width:100%;max-width:340px;height:auto;display:block;border:1px solid #ffffff1a;background:#000;justify-self:center}

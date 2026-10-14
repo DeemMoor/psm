@@ -1,17 +1,58 @@
-// Фото продукции (лежат в frontend/public/img/works/, при сборке копируются в backend/public/img/works/).
+// Фото и видео продукции (лежат в frontend/public/, при сборке копируются в backend/public/).
 // width/height — реальные размеры файла: браузер заранее резервирует место и страница не «прыгает» при загрузке.
+// thumb — лёгкое превью для сетки; полное фото грузится, только когда его открыли.
 export type Photo = {
   src: string
+  thumb?: string
   alt: string
   width: number
   height: number
 }
 
-export const PHOTOS = {
-  fan: { src: '/img/works/vanes-fan.webp', alt: 'Четыре графитовые лопатки для вакуумного насоса веером на столе', width: 960, height: 880 },
-  row: { src: '/img/works/vanes-row.webp', alt: 'Комплект из восьми графитовых лопаток для роторно-пластинчатого насоса', width: 720, height: 912 },
-  stand: { src: '/img/works/vanes-stand.webp', alt: 'Графитовые лопатки с фаской, вид с торца', width: 960, height: 912 },
-  short: { src: '/img/works/vanes-short.webp', alt: 'Короткие графитовые лопатки с фаской для компрессора', width: 960, height: 912 },
-} satisfies Record<string, Photo>
+const DIR = '/img/photos'
 
-export const GALLERY: Photo[] = [PHOTOS.row, PHOTOS.stand, PHOTOS.short, PHOTOS.fan]
+const photo = (name: string, alt: string, width: number, height: number, withThumb = true): Photo => ({
+  src: `${DIR}/${name}.webp`,
+  thumb: withThumb ? `${DIR}/${name}-sm.webp` : undefined,
+  alt,
+  width,
+  height,
+})
+
+export const HERO = photo('hero-01', 'Графитовые лопатки разных размеров для вакуумных насосов и компрессоров', 1024, 768, false)
+
+export const MATERIAL = photo('material-01', 'Заготовки из изостатического графита для изготовления лопаток', 1280, 1100, false)
+
+export const WORKS: Photo[] = [
+  photo('works-01', 'Четыре графитовые лопатки для вакуумного насоса веером', 1280, 1280),
+  photo('works-02', 'Комплект из восьми графитовых лопаток для роторно-пластинчатого насоса', 960, 1280),
+  photo('works-03', 'Два комплекта графитовых лопаток разной ширины', 1280, 1280),
+  photo('works-04', 'Комплекты длинных и коротких графитовых лопаток', 1280, 1280),
+  photo('works-05', 'Длинные графитовые лопатки с фаской, вид сбоку', 1280, 1280),
+  photo('works-06', 'Стопка широких графитовых лопаток', 1280, 1280),
+  photo('works-07', 'Графитовые лопатки с фаской, вид с торца', 1280, 1280),
+  photo('works-08', 'Графитовые лопатки для компрессора сухого трения', 1280, 1280),
+  photo('works-09', 'Тонкие графитовые лопатки на ребре', 1280, 1280),
+  photo('works-10', 'Короткие графитовые лопатки с фаской', 1280, 1280),
+  photo('works-11', 'Комплект широких графитовых лопаток', 1280, 1280),
+  photo('works-12', 'Длинные узкие графитовые лопатки', 1280, 1280),
+]
+
+export const MEASURE: Photo[] = [
+  photo('measure-01', 'Контроль толщины графитовой лопатки микрометром', 1280, 1280),
+  photo('measure-02', 'Замер графитовой лопатки микрометром', 1280, 1280),
+  photo('measure-03', 'Замер ширины графитовой лопатки штангенциркулем', 1280, 1280),
+  photo('measure-04', 'Проверка ширины комплекта лопаток штангенциркулем', 1280, 1280),
+  photo('measure-05', 'Замер маленькой графитовой лопатки штангенциркулем', 960, 1280),
+  photo('measure-06', 'Проверка размеров короткой лопатки', 960, 1280),
+  photo('measure-07', 'Замер лопатки сложного профиля по образцу', 960, 1280),
+  photo('measure-08', 'Замер лопатки сложного профиля с пазами', 1280, 960),
+]
+
+// Видео: лопатка нестандартного профиля (пазы, ступенька).
+export const PROFILE_VIDEO = {
+  src: '/video/vane-profile.mp4',
+  poster: `${DIR}/vane-profile-poster.jpg`,
+  width: 480,
+  height: 864,
+}

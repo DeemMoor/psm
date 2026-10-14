@@ -23,6 +23,7 @@ Thumbs.db
 /backend/public/index.html
 /backend/public/assets/
 /backend/public/img/
+/backend/public/video/
 /backend/public/favicon.svg
 
 # Frontend — React/Vite (frontend/)

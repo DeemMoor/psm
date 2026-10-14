@@ -5,7 +5,9 @@ import type { Photo } from '../photos'
 const shift = (i: number | null, delta: number, total: number) => (i === null ? null : (i + delta + total) % total)
 
 // Сетка фото; по клику фото открывается на весь экран (лайтбокс), листается стрелками, Esc — закрыть.
-export default function Gallery({ photos }: { photos: Photo[] }) {
+// initial — сколько фото показать сразу; остальные — по кнопке «Показать ещё».
+export default function Gallery({ photos, initial = photos.length }: { photos: Photo[]; initial?: number }) {
+  const [expanded, setExpanded] = useState(false)
   // Номер открытого фото; null — лайтбокс закрыт.
   const [open, setOpen] = useState<number | null>(null)
 
@@ -32,12 +34,17 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
   return (
     <>
       <div className="gallery">
-        {photos.map((photo, i) => (
+        {(expanded ? photos : photos.slice(0, initial)).map((photo, i) => (
           <button type="button" className="gallery-item" key={photo.src} onClick={() => setOpen(i)} aria-label={`Открыть фото: ${photo.alt}`}>
-            <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" />
+            <img src={photo.thumb ?? photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" />
           </button>
         ))}
       </div>
+      {!expanded && photos.length > initial && (
+        <button type="button" className="gallery-more" onClick={() => setExpanded(true)}>
+          Показать ещё {photos.length - initial} фото
+        </button>
+      )}
 
       {current && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={current.alt} onClick={() => setOpen(null)}>
