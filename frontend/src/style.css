@@ -55,3 +55,15 @@
 .block .block-text+.gallery{margin-top:24px}
 .stack{display:grid;gap:16px}
 .block-video{width:100%;max-width:340px;height:auto;display:block;border:1px solid #ffffff1a;background:#000;justify-self:center}
+
+/* Заголовок первого экрана — ровно две строки на любом экране.
+   Размер шрифта считается от ширины колонки (cqi = 1% ширины контейнера):
+   самая длинная строка «для насосов-компрессоров» ≈ 12em, поэтому 8cqi всегда влезает. */
+.hero-copy{container-type:inline-size}
+.hero h1{font-size:min(8cqi,64px);line-height:1.08}
+.hero h1 .line{display:block;white-space:nowrap;color:inherit}
+.hero h1 .accent{color:#b7bdab}
+/* Точка у телефона в шапке — бледно-зелёная («на связи»). */
+.phone-dot{background:#a6dca0;box-shadow:0 0 12px #a6dca099}
+/* Телефон в кнопке — крупнее и контрастнее, чтобы читался на телефоне. */
+.call-button small{font-size:14px;font-weight:700;color:#171a18;letter-spacing:.01em}

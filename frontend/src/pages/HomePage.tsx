@@ -25,7 +25,7 @@ export default function HomePage() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <div className="eyebrow"><span /> ИЗГОТОВЛЕНИЕ НА ЗАКАЗ · ДОСТАВКА СДЭК</div>
-          <h1>Графитовые<br /><span>лопатки</span><br />для насосов</h1>
+          <h1><span className="line">Графитовые <span className="accent">лопатки</span></span> <span className="line">для насосов-компрессоров</span></h1>
           <p className="intro">
             Изготавливаем лопатки для роторно-пластинчатых насосов и компрессоров «сухого» трения —
             точно под ваше оборудование: по размерам, чертежу, образцу или фото. Срочно — за 1 сутки.
