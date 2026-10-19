@@ -1,11 +1,35 @@
 import Gallery from '../components/Gallery'
 import { PHONE, PHONE_HREF } from '../contacts'
-import { HERO, MATERIAL, MEASURE, PROFILE_VIDEO, WORKS } from '../photos'
+import { HERO, MEASURE, WORKS } from '../photos'
 
 // Тексты лендинга. Вынесены в массивы, чтобы правка контента не требовала лезть в разметку.
 const TERMS = [
   { name: 'Срочно', time: 'за 1 сутки', text: 'Когда лопатка нужна максимально быстро. Стоимость выше.' },
   { name: 'Стандартно', time: 'около 2 недель', text: 'Оптимальная цена для плановой замены.' },
+]
+
+const MATERIALS = [
+  {
+    name: 'Графит группы МПГ',
+    text: [
+      'Мелкозернистые плотные графиты группы высокопрочных. В зависимости от требуемых характеристик подбираем марку: МПГ-6 (с малым содержанием золы), МПГ-7 (плотность не менее 1,70–1,80 г/см³, прочность при сжатии ~103 МПа), МПГ-8 (плотность до 1,99 г/см³, повышенная эрозионная стойкость).',
+      'Оптимальный выбор для лопаток, работающих в узлах сухого трения и в контакте с агрессивными средами.',
+    ],
+  },
+  {
+    name: 'Изостатический графит',
+    text: [
+      'Производится методом холодного изостатического прессования (CIP). Ключевое преимущество — изотропия: свойства материала одинаковы во всех направлениях.',
+      'Это обеспечивает минимальную пористость, высокую и стабильную плотность (до 1,9 г/см³) и предсказуемое поведение детали под нагрузкой. Применяется там, где требуется максимальная точность и надёжность.',
+    ],
+  },
+]
+
+const CAPABILITIES = [
+  'Изготовление по чертежам заказчика',
+  'Подбор марки графита под конкретные условия эксплуатации',
+  'Контроль геометрии и качества поверхности',
+  'Серийные и единичные партии',
 ]
 
 const BRANDS = [
@@ -34,7 +58,7 @@ export default function HomePage() {
             <span className="button-icon">↗</span>
             <span>Рассчитать стоимость<small>{PHONE}</small></span>
           </a>
-          <div className="hero-index"><span>01</span><i /> ИЗОСТАТИЧЕСКИЙ ГРАФИТ · CZ5 · CGD</div>
+          <div className="hero-index"><span>01</span><i /> ГРАФИТ МПГ · ИЗОСТАТИЧЕСКИЙ ГРАФИТ</div>
         </div>
         <div className="hero-art">
           <div className="art-glow" />
@@ -65,27 +89,29 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>04</span> Материал</h2>
-        <div className="with-photo">
-          <div className="stack">
-            <p>
-              Мелкозернистый плотный конструкционный графит — изостатический, марки <b>CZ5</b> и <b>CGD</b>,
-              с пониженным содержанием примесей.
-            </p>
-            <p>
-              Такой графит стабильно держит форму при нагреве и служит дольше экструзионного:
-              меньше пыли и меньше износ камеры насоса.
-            </p>
-          </div>
-          <img className="block-photo" src={MATERIAL.src} alt={MATERIAL.alt} width={MATERIAL.width} height={MATERIAL.height} loading="lazy" decoding="async" />
+        <p className="block-text">
+          Мы производим лопатки из искусственного графита для вакуумных насосов, компрессоров и насосного
+          оборудования. В зависимости от условий работы применяем два типа материалов.
+        </p>
+        <div className="cards materials">
+          {MATERIALS.map((material) => (
+            <div className="card" key={material.name}>
+              <h3 className="card-value">{material.name}</h3>
+              {material.text.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          ))}
         </div>
+        <h3 className="block-subtitle">Наши возможности</h3>
+        <ul className="features">
+          {CAPABILITIES.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+        <h3 className="block-subtitle">Области применения</h3>
+        <p>Вакуумные насосы, компрессоры, насосное оборудование, узлы сухого трения, агрессивные среды.</p>
       </section>
 
       <section className="block">
         <h2 className="block-title"><span>05</span> Контроль размеров</h2>
-        <p className="block-text">
-          Толщину, ширину и длину проверяем микрометром и штангенциркулем — с точностью до сотых долей миллиметра.
-        </p>
-        <Gallery photos={MEASURE} initial={4} />
+        <Gallery photos={MEASURE} />
       </section>
 
       <section className="block">
@@ -101,24 +127,7 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>07</span> Нестандартные доработки</h2>
-        <div className="with-photo">
-          <p className="block-text">
-            Делаем не только по стандарту: увеличим высоту, изменим геометрию, уберём фаску, сделаем пазы
-            и ступеньки по образцу. Есть свои требования — расскажите, согласуем.
-          </p>
-          {/* preload="none": видео (~3 МБ) не качается, пока не нажали Play — на экране только обложка. */}
-          <video
-            className="block-video"
-            src={PROFILE_VIDEO.src}
-            poster={PROFILE_VIDEO.poster}
-            width={PROFILE_VIDEO.width}
-            height={PROFILE_VIDEO.height}
-            controls
-            playsInline
-            preload="none"
-            aria-label="Видео: графитовая лопатка нестандартного профиля с пазами"
-          />
-        </div>
+        <p className="block-text">Возможны нестандартные доработки, обращайтесь.</p>
       </section>
 
       <section className="block">

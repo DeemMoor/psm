@@ -67,3 +67,13 @@
 .phone-dot{background:#a6dca0;box-shadow:0 0 12px #a6dca099}
 /* Телефон в кнопке — крупнее и контрастнее, чтобы читался на телефоне. */
 .call-button small{font-size:14px;font-weight:700;color:#171a18;letter-spacing:.01em}
+
+/* Раздел «Материал»: карточки марок, подзаголовки, список возможностей. */
+.block .materials{margin-top:32px}
+.materials .card-value{font-size:22px;margin-top:0}
+.materials .card p+p{margin-top:12px}
+.block-subtitle{margin:36px 0 14px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#aeb2a3;font-weight:700}
+.features{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 32px}
+.features li{position:relative;padding-left:18px;color:#d5d8c4;font-size:15px;line-height:1.6}
+.features li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:#c1c6ae}
+@media(max-width:760px){.features{grid-template-columns:1fr}}
