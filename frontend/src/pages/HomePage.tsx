@@ -84,7 +84,7 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>03</span> Примеры работ</h2>
-        <Gallery photos={WORKS} initial={8} />
+        <Gallery photos={WORKS} mobileInitial={4} />
       </section>
 
       <section className="block">

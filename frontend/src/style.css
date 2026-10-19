@@ -77,3 +77,6 @@
 .features li{position:relative;padding-left:18px;color:#d5d8c4;font-size:15px;line-height:1.6}
 .features li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:#c1c6ae}
 @media(max-width:760px){.features{grid-template-columns:1fr}}
+/* «Показать ещё» только для телефона: на десктопе кнопки нет, на телефоне лишние фото спрятаны до нажатия. */
+.gallery-more-mobile{display:none}
+@media(max-width:760px){.gallery:not(.gallery-expanded) .gallery-item-extra{display:none}.gallery-more-mobile{display:block}}

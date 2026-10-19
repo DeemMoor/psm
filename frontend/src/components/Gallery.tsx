@@ -6,7 +6,11 @@ const shift = (i: number | null, delta: number, total: number) => (i === null ? 
 
 // Сетка фото; по клику фото открывается на весь экран (лайтбокс), листается стрелками, Esc — закрыть.
 // initial — сколько фото показать сразу; остальные — по кнопке «Показать ещё».
-export default function Gallery({ photos, initial = photos.length }: { photos: Photo[]; initial?: number }) {
+// mobileInitial — то же, но только для телефона. Ширину экрана при пререндере знать нельзя,
+// поэтому все фото есть в HTML, а лишние на телефоне прячет CSS (класс gallery-item-extra).
+type Props = { photos: Photo[]; initial?: number; mobileInitial?: number }
+
+export default function Gallery({ photos, initial = photos.length, mobileInitial = initial }: Props) {
   const [expanded, setExpanded] = useState(false)
   // Номер открытого фото; null — лайтбокс закрыт.
   const [open, setOpen] = useState<number | null>(null)
@@ -33,9 +37,9 @@ export default function Gallery({ photos, initial = photos.length }: { photos: P
 
   return (
     <>
-      <div className="gallery">
+      <div className={expanded ? 'gallery gallery-expanded' : 'gallery'}>
         {(expanded ? photos : photos.slice(0, initial)).map((photo, i) => (
-          <button type="button" className="gallery-item" key={photo.src} onClick={() => setOpen(i)} aria-label={`Открыть фото: ${photo.alt}`}>
+          <button type="button" className={i >= mobileInitial ? 'gallery-item gallery-item-extra' : 'gallery-item'} key={photo.src} onClick={() => setOpen(i)} aria-label={`Открыть фото: ${photo.alt}`}>
             <img src={photo.thumb ?? photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" />
           </button>
         ))}
@@ -43,6 +47,11 @@ export default function Gallery({ photos, initial = photos.length }: { photos: P
       {!expanded && photos.length > initial && (
         <button type="button" className="gallery-more" onClick={() => setExpanded(true)}>
           Показать ещё {photos.length - initial} фото
+        </button>
+      )}
+      {!expanded && photos.length > mobileInitial && initial === photos.length && (
+        <button type="button" className="gallery-more gallery-more-mobile" onClick={() => setExpanded(true)}>
+          Показать ещё {photos.length - mobileInitial} фото
         </button>
       )}
 
