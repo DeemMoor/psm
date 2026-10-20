@@ -40,9 +40,10 @@ export const MEASURE: Photo[] = [
 ]
 
 // Видео лежит в frontend/public/video/; poster — обложка, которую видно до нажатия Play.
+// Новое видео — новое имя файла: браузеры кэшируют медиа на 30 дней и по старому адресу покажут старую копию.
 export const PROFILE_VIDEO = {
-  src: '/video/vane-profile.mp4',
-  poster: `${DIR}/vane-profile-poster.jpg`,
+  src: '/video/vane-profile-2.mp4',
+  poster: `${DIR}/vane-profile-2-poster.jpg`,
   width: 540,
   height: 960,
 }
