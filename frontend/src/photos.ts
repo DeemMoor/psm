@@ -38,3 +38,11 @@ export const MEASURE: Photo[] = [
   photo('measure-04', 'Проверка ширины комплекта лопаток штангенциркулем', 1280, 1280),
   photo('measure-06', 'Проверка размеров короткой лопатки', 960, 1280),
 ]
+
+// Видео лежит в frontend/public/video/; poster — обложка, которую видно до нажатия Play.
+export const PROFILE_VIDEO = {
+  src: '/video/vane-profile.mp4',
+  poster: `${DIR}/vane-profile-poster.jpg`,
+  width: 540,
+  height: 960,
+}

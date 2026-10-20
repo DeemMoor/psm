@@ -1,6 +1,6 @@
 import Gallery from '../components/Gallery'
 import { EMAIL, EMAIL_HREF, PHONE, PHONE_HREF } from '../contacts'
-import { HERO, MEASURE, WORKS } from '../photos'
+import { HERO, MEASURE, PROFILE_VIDEO, WORKS } from '../photos'
 
 // Тексты лендинга. Вынесены в массивы, чтобы правка контента не требовала лезть в разметку.
 const TERMS = [
@@ -128,7 +128,21 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>07</span> Нестандартные доработки</h2>
-        <p className="block-text">Возможны нестандартные доработки, обращайтесь.</p>
+        <div className="with-photo">
+          <p className="block-text">Возможны нестандартные доработки, обращайтесь.</p>
+          {/* preload="none": видео (~5 МБ) не качается, пока не нажали Play — на экране только обложка. */}
+          <video
+            className="block-video"
+            src={PROFILE_VIDEO.src}
+            poster={PROFILE_VIDEO.poster}
+            width={PROFILE_VIDEO.width}
+            height={PROFILE_VIDEO.height}
+            controls
+            playsInline
+            preload="none"
+            aria-label="Видео: графитовые лопатки нестандартного профиля с пазами и ступеньками"
+          />
+        </div>
       </section>
 
       <section className="block">
