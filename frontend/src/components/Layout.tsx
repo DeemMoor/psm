@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
-import { PHONE, PHONE_HREF } from '../contacts'
+import { EMAIL, EMAIL_HREF, PHONE, PHONE_HREF } from '../contacts'
 
 // Общий каркас всех страниц: шапка и подвал, между ними — текущая страница (Outlet).
 export default function Layout() {
@@ -18,7 +18,11 @@ export default function Layout() {
 
       <Outlet />
 
-      <footer className="footer"><span>ГРАФИТОВЫЕ ЛОПАТКИ</span><span>Свяжитесь с нами по телефону</span><a href={PHONE_HREF}>{PHONE}</a></footer>
+      <footer className="footer">
+        <span>ГРАФИТОВЫЕ ЛОПАТКИ</span>
+        <span>Звоните или пишите в мессенджеры</span>
+        <span className="footer-contacts"><a href={PHONE_HREF}>{PHONE}</a><a href={EMAIL_HREF}>{EMAIL}</a></span>
+      </footer>
     </main>
   )
 }

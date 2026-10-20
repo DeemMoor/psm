@@ -1,5 +1,5 @@
 import Gallery from '../components/Gallery'
-import { PHONE, PHONE_HREF } from '../contacts'
+import { EMAIL, EMAIL_HREF, PHONE, PHONE_HREF } from '../contacts'
 import { HERO, MEASURE, WORKS } from '../photos'
 
 // Тексты лендинга. Вынесены в массивы, чтобы правка контента не требовала лезть в разметку.
@@ -58,6 +58,7 @@ export default function HomePage() {
             <span className="button-icon">↗</span>
             <span>Рассчитать стоимость<small>{PHONE}</small></span>
           </a>
+          <p className="contact-note">Звоните или пишите в мессенджеры на этот номер</p>
           <div className="hero-index"><span>01</span><i /> ГРАФИТ МПГ · ИЗОСТАТИЧЕСКИЙ ГРАФИТ</div>
         </div>
         <div className="hero-art">
@@ -132,7 +133,10 @@ export default function HomePage() {
 
       <section className="block">
         <h2 className="block-title"><span>08</span> Как получить расчёт</h2>
-        <p className="block-text">Позвоните или напишите на {PHONE} и пришлите любое из этого:</p>
+        <p className="block-text">
+          Позвоните или напишите в мессенджер на {PHONE}, либо на почту <a className="link" href={EMAIL_HREF}>{EMAIL}</a>,
+          и пришлите любое из этого:
+        </p>
         <ol className="steps">
           {STEPS.map((step) => <li key={step}>{step}</li>)}
         </ol>
@@ -149,6 +153,7 @@ export default function HomePage() {
           <span className="button-icon">↗</span>
           <span>Позвонить<small>{PHONE}</small></span>
         </a>
+        <p className="contact-note">На этот номер можно писать в мессенджеры. Почта: <a className="link" href={EMAIL_HREF}>{EMAIL}</a></p>
       </section>
     </>
   )

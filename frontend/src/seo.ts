@@ -1,4 +1,4 @@
-import { PHONE } from './contacts'
+import { EMAIL, PHONE } from './contacts'
 
 // Канонический адрес сайта (дублирует SITE_URL из backend/.env.prod — менять в обоих местах).
 export const SITE_URL = 'https://psm-carbon.ru'
@@ -41,6 +41,7 @@ const ORGANIZATION = {
   name: SITE_NAME,
   url: `${SITE_URL}/`,
   telephone: PHONE.replace(/[^+\d]/g, ''),
+  email: EMAIL,
   image: `${SITE_URL}/img/og.jpg`,
   description: PAGES['/'].description,
   address: {

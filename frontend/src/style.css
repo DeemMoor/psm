@@ -64,7 +64,7 @@
 .hero h1 .line{display:block;white-space:nowrap;color:inherit}
 .hero h1 .accent{color:#b7bdab}
 /* Точка у телефона в шапке — бледно-зелёная («на связи»). */
-.phone-dot{background:#a6dca0;box-shadow:0 0 12px #a6dca099}
+.phone-dot{width:10px;height:10px;flex:none;background:#5be37a;box-shadow:0 0 6px 1px #5be37a,0 0 16px #5be37a99}
 /* Телефон в кнопке — крупнее и контрастнее, чтобы читался на телефоне. */
 .call-button small{font-size:14px;font-weight:700;color:#171a18;letter-spacing:.01em}
 
@@ -80,3 +80,4 @@
 /* «Показать ещё» только для телефона: на десктопе кнопки нет, на телефоне лишние фото спрятаны до нажатия. */
 .gallery-more-mobile{display:none}
 @media(max-width:760px){.gallery:not(.gallery-expanded) .gallery-item-extra{display:none}.gallery-more-mobile{display:block}}
+.contact-note{margin:14px 0 0;color:#9a9f98;font-size:13px;line-height:1.6}.link{white-space:nowrap;color:#c1c6ae;border-bottom:1px solid #c1c6ae66}.link:hover{color:#f0f0e9}.footer-contacts{display:flex;gap:20px;flex-wrap:wrap}.footer-contacts a{color:#b5baaa;font-size:11px;font-weight:700;letter-spacing:.03em}
