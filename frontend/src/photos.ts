@@ -19,6 +19,13 @@ const photo = (name: string, alt: string, width: number, height: number, withThu
   height,
 })
 
+const pngPhoto = (name: string, alt: string, width: number, height: number): Photo => ({
+  src: `${DIR}/${name}.png`,
+  alt,
+  width,
+  height,
+})
+
 export const HERO = photo('hero-01', 'Графитовые лопатки разных размеров для вакуумных насосов и компрессоров', 1024, 768, false)
 
 export const WORKS: Photo[] = [
@@ -26,10 +33,10 @@ export const WORKS: Photo[] = [
   photo('works-03', 'Два комплекта графитовых лопаток разной ширины', 1280, 1280),
   photo('works-04', 'Комплекты длинных и коротких графитовых лопаток', 1280, 1280),
   photo('works-05', 'Длинные графитовые лопатки с фаской, вид сбоку', 1280, 1280),
-  photo('works-06', 'Стопка широких графитовых лопаток', 1280, 1280),
   photo('works-07', 'Графитовые лопатки с фаской, вид с торца', 1280, 1280),
   photo('works-08', 'Графитовые лопатки для компрессора сухого трения', 1280, 1280),
   photo('works-10', 'Короткие графитовые лопатки с фаской', 1280, 1280),
+  pngPhoto('works-11', 'Проверка размера графитовой лопатки штангенциркулем', 960, 1280),
 ]
 
 export const MEASURE: Photo[] = [

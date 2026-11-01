@@ -55,7 +55,7 @@ export default function HomePage() {
             точно под ваше оборудование: по размерам, чертежу, образцу или фото. Срочно — 1 день.
           </p>
           <a className="call-button" href={PHONE_HREF}>
-            <span className="button-icon">↗</span>
+            <span className="button-icon">☏</span>
             <span>Рассчитать стоимость<small>{PHONE}</small></span>
           </a>
           <p className="contact-note">Звоните или пишите в мессенджеры на этот номер</p>
@@ -164,7 +164,7 @@ export default function HomePage() {
           <p>Самовывоз — <b>г. Ростов-на-Дону</b>, район СЖМ.</p>
         </div>
         <a className="call-button" href={PHONE_HREF}>
-          <span className="button-icon">↗</span>
+          <span className="button-icon">☏</span>
           <span>Позвонить<small>{PHONE}</small></span>
         </a>
         <p className="contact-note">На этот номер можно писать в мессенджеры. Почта: <a className="link" href={EMAIL_HREF}>{EMAIL}</a></p>
